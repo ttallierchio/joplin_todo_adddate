@@ -5,7 +5,7 @@ joplin.plugins.register({
 
 	onStart: async function () {
 
-		// Later, this is where you'll want to update the TOC
+		
 		await joplin.commands.register({
 			name: 'CopyToDoCurrentDate',
 			label: 'Copy ToDo With Current Date',
