@@ -3,7 +3,7 @@ import { MenuItemLocation } from 'api/types';
 
 joplin.plugins.register({
 
-	onStart: async function() {
+	onStart: async function () {
 
 		// Later, this is where you'll want to update the TOC
 		await joplin.commands.register({
@@ -13,23 +13,24 @@ joplin.plugins.register({
 
 				const note_ids = await joplin.workspace.selectedNoteIds();
 
-				if (note_ids.length == 1){
-					const note_data = await joplin.data.get(['notes', note_ids[0]],{fields:['body','parent_id','is_todo']}).then(function(data){
+				if (note_ids.length == 1) {
+					const note_data = await joplin.data.get(['notes', note_ids[0]], { fields: ['body', 'parent_id', 'is_todo'] }).then(function (data) {
 
 						var title: string = new Date().toLocaleDateString();
-						joplin.data.post(['notes'],null, { body: data.body, 
-														   title: title,
-														   parent_id: data.parent_id,
-														   is_todo:data.is_todo
-														 }
-										)
+						joplin.data.post(['notes'], null, {
+							body: data.body,
+							title: title,
+							parent_id: data.parent_id,
+							is_todo: data.is_todo
+						}
+						)
 					});
-					
-					
+
+
 				}
 
 
-				
+
 			},
 		});
 
